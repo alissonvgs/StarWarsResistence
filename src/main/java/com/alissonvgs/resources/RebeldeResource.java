@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -40,15 +39,15 @@ public class RebeldeResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody RebeldeDTO objDto) {
-		Rebelde obj = service.fromDTO(objDto);
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody Rebelde objDto) {
+		//Rebelde obj = service.fromDTO(objDto);
+		Rebelde obj = service.insert(objDto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody RebeldeDTO objDto, @PathVariable Integer id) {
+	public ResponseEntity<RebeldeDTO> update(@RequestBody RebeldeDTO objDto, @PathVariable Integer id) {
 		Rebelde obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);

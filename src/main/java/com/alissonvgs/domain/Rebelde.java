@@ -38,13 +38,14 @@ public class Rebelde implements Serializable {
 	public Rebelde() {
 	}
 
-	public Rebelde(Integer id, String nome, Integer idade, String genero, Localizacao localizacao) {
+	public Rebelde(Integer id, String nome, Integer idade, String genero, Localizacao localizacao, Inventario inventario) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 		this.genero = genero;
 		this.localizacao = localizacao;
+		this.inventario = inventario;
 	}
 
 	public Integer getId() {
