@@ -17,17 +17,21 @@ public class TraidorReport implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "traidor")
 	private Rebelde traidor;
+
+	@Column(name = "autor")
+	private Rebelde autor;
 
 	public TraidorReport() {
 	}
 
-	public TraidorReport(Integer id, Rebelde traidor) {
+	public TraidorReport(Integer id, Rebelde traidor, Rebelde autor) {
 		super();
 		this.id = id;
 		this.traidor = traidor;
+		this.autor = autor;
 	}
 
 	public Integer getId() {
@@ -44,6 +48,14 @@ public class TraidorReport implements Serializable {
 
 	public void setTraidor(Rebelde traidor) {
 		this.traidor = traidor;
+	}
+
+	public Rebelde getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Rebelde autor) {
+		this.autor = autor;
 	}
 
 	@Override
@@ -71,5 +83,4 @@ public class TraidorReport implements Serializable {
 		return true;
 	}
 
-	
 }
