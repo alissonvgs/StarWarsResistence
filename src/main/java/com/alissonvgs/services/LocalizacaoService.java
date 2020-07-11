@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alissonvgs.domain.Localizacao;
+import com.alissonvgs.dto.LocalizacaoDTO;
 import com.alissonvgs.repositories.LocalizacaoRepository;
 
 @Service
@@ -40,5 +41,9 @@ public class LocalizacaoService {
 		newObj.setNome(obj.getNome());
 		newObj.setLatitude(obj.getLatitude());
 		newObj.setLongitude(obj.getLongitude());
+	}
+	
+	public Localizacao fromDTO(LocalizacaoDTO objDto) {
+		return new Localizacao(objDto.getId(), objDto.getLatitude(), objDto.getLongitude(), objDto.getNome());
 	}
 }
