@@ -10,6 +10,8 @@ public class TraidorReportDTO implements Serializable {
 	private Integer id;
 
 	private Rebelde traidor;
+	
+	private Rebelde autor;
 
 	public TraidorReportDTO() {
 	}
@@ -30,4 +32,13 @@ public class TraidorReportDTO implements Serializable {
 		this.traidor = traidor;
 	}
 
+	public Rebelde getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Rebelde autor) {
+		this.autor = autor;
+	}
+
+	
 }
