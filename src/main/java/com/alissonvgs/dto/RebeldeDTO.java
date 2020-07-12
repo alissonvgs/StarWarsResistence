@@ -1,15 +1,20 @@
 package com.alissonvgs.dto;
 
 import java.io.Serializable;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class RebeldeDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Size(min = 2, max = 120, message = "O tamanho deve ser entre 2 e 120 caracteres")
 	private String nome;
 	private Integer idade;
-	private String genero;	
+	private String genero;
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private LocalizacaoDTO localizacao;
 	private InventarioDTO inventario;
 	

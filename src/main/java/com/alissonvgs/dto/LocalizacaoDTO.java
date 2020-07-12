@@ -2,12 +2,16 @@ package com.alissonvgs.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 public class LocalizacaoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private Integer latitude;
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private Integer longitude;
 	private String nome;
 

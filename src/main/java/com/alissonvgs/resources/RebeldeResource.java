@@ -3,6 +3,8 @@ package com.alissonvgs.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,7 +41,7 @@ public class RebeldeResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Rebelde objDto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody Rebelde objDto) {
 		//Rebelde obj = service.fromDTO(objDto);
 		Rebelde obj = service.insert(objDto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -47,7 +49,7 @@ public class RebeldeResource {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<RebeldeDTO> update(@RequestBody RebeldeDTO objDto, @PathVariable Integer id) {
+	public ResponseEntity<RebeldeDTO> update(@Valid @RequestBody RebeldeDTO objDto, @PathVariable Integer id) {
 		Rebelde obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
