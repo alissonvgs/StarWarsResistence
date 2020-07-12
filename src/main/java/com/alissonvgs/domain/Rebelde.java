@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,26 +19,31 @@ public class Rebelde implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "idade")
 	private Integer idade;
-	
+
 	@Column(name = "genero")
 	private String genero;
-	
+
+	private Boolean traidor = false;
+
 	@OneToOne
+	@JoinColumn(name = "localizacao_id")
 	private Localizacao localizacao;
 	
-	@ManyToOne
+	@OneToOne
+	@JoinColumn(name = "inventario_id")
 	private Inventario inventario;
 
 	public Rebelde() {
 	}
 
-	public Rebelde(Integer id, String nome, Integer idade, String genero, Localizacao localizacao, Inventario inventario) {
+	public Rebelde(Integer id, String nome, Integer idade, String genero, Localizacao localizacao,
+			Inventario inventario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -78,6 +83,14 @@ public class Rebelde implements Serializable {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public Boolean getTraidor() {
+		return traidor;
+	}
+
+	public void setTraidor(Boolean traidor) {
+		this.traidor = traidor;
 	}
 
 	public Localizacao getLocalizacao() {
@@ -121,5 +134,4 @@ public class Rebelde implements Serializable {
 		return true;
 	}
 
-	
 }
